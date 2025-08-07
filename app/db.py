@@ -12,7 +12,7 @@ MONGO_DATABASE_URL = os.getenv("MONGO_DATABASE_URL")
 # Create an instance of the MongoClient
 
 # client = MongoClient("mongodb://localhost:27017/")
-client = MongoClient("MONGO_DATABASE_URL")
+client = MongoClient(MONGO_DATABASE_URL)
 
 # Access the database
 db = client["ticket_system"]
