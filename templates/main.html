@@ -623,8 +623,7 @@
 
             async sendToAPI(qrData) {
                 try {
-                    const response = await fetch('http://127.0.0.1:8000/ticket/scan/', {
-                    // const response = await fetch('https://tickting-system-1.onrender.com/ticket/scan/', {
+                    const response = await fetch('/ticket/scan', {
 
                         method: 'POST',
                         headers: {
