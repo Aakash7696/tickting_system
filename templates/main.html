@@ -623,7 +623,7 @@
 
             async sendToAPI(qrData) {
                 try {
-                    const response = await fetch('https://4bafc79c9415.ngrok-free.app/ticket/scan/', {
+                    const response = await fetch('http://127.0.0.1:8000/ticket/scan/', {
                         method: 'POST',
                         headers: {
                             'accept': 'application/json',
@@ -638,7 +638,6 @@
                     const responseData = await response.json();
 
                     if (!response.ok) {
-                        // Handle API errors (400, 404, etc.)
                         throw new Error(responseData.detail || 'Server error occurred');
                     }
 

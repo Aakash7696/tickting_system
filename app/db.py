@@ -1,21 +1,33 @@
-# app/db.py
+# Live MongoDB connection setup
+
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Live Mongo Database URL from .env file
 MONGO_DATABASE_URL = os.getenv("MONGO_DATABASE_URL")
+print(f"Connecting to MongoDB at {MONGO_DATABASE_URL}")
 
-# Create an instance of the MongoClient
+client = MongoClient(MONGO_DATABASE_URL)
+print("MongoDB client created:- ", client)
+
+try:
+    client.admin.command('ping')
+    print("✅ MongoDB connection successful.")
+except Exception as e:
+    print("❌ MongoDB connection failed:", e)
+
+
+db = client["ticket_system"]
+tickets_collection = db["tickets"]
+
+
+
+# Local Mongo Database URL
+
+# from pymongo import MongoClient
 
 # client = MongoClient("mongodb://localhost:27017/")
-client = MongoClient("MONGO_DATABASE_URL")
-
-# Access the database
-db = client["ticket_system"]
-
-# Collection names (equivalent to tables in relational databases)
-tickets_collection = db["tickets"]
+# db = client["ticket_system"]
+# tickets_collection = db["tickets"]

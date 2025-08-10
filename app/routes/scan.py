@@ -8,7 +8,7 @@ router = APIRouter()
 class QRScanRequest(BaseModel):
     encrypted_data: str
 
-@router.post("/scan/")
+@router.post("/scan")
 def scan_ticket(data: QRScanRequest):
     ticket = tickets_collection.find_one({"encrypted_data": data.encrypted_data})
 
