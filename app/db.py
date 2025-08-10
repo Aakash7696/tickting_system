@@ -1,5 +1,3 @@
-# Live MongoDB connection setup
-
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
@@ -18,16 +16,12 @@ try:
 except Exception as e:
     print("❌ MongoDB connection failed:", e)
 
-
 db = client["ticket_system"]
 tickets_collection = db["tickets"]
 
-
-
-# Local Mongo Database URL
-
-# from pymongo import MongoClient
-
+# ----------------------------
+# If you want to use Local Mongo instead, uncomment this:
 # client = MongoClient("mongodb://localhost:27017/")
 # db = client["ticket_system"]
 # tickets_collection = db["tickets"]
+# ----------------------------
